@@ -4,7 +4,6 @@ import { addFilter } from 'redux/filterSlice';
 import { deleteContactAPI } from 'redux/operations';
 
 export const Contacts = () => {
-  console.log();
   const filteredArr = (contacts, filter) => {
     if (!filter) return contacts;
     return contacts.filter(({ name }) =>

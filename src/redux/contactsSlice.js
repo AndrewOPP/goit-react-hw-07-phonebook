@@ -11,18 +11,7 @@ const contactsInitialState = {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: contactsInitialState,
-  //   reducers: {
-  //     addContact: {
-  //       reducer(state, action) {
-  //         state.push(action.payload);
-  //       },
-  //     },
-  //     deleteContact: {
-  //       reducer(state, action) {
-  //         return state.filter(elem => elem.id !== action.payload);
-  //       },
-  //     },
-  //   },
+
   extraReducers: {
     [contactsFetch.pending](state) {
       state.isLoading = true;
@@ -64,12 +53,6 @@ const contactsSlice = createSlice({
     },
   },
 });
-
-// export const persistConfig = {
-//   key: 'root',
-//   storage,
-//   whitelist: ['contacts'],
-// };
 
 export const { addContact, deleteContact, contactNameFilter } =
   contactsSlice.actions;
