@@ -1,16 +1,16 @@
 import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
+import { addContactPost } from 'redux/operations';
 
 export const Phonebook = () => {
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
   const dispatch = useDispatch();
 
   const addToContacts = contact => {
     if (contacts.find(elem => elem.name === contact.name))
       return alert('Sorry, this contact is already added');
-    dispatch(addContact(contact));
+    dispatch(addContactPost(contact));
   };
 
   const handleSubmit = event => {
@@ -22,7 +22,7 @@ export const Phonebook = () => {
     if (name && number) {
       addToContacts({
         name: name,
-        number: number,
+        phone: number,
         id: nanoid(),
       });
     }
