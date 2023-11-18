@@ -3,11 +3,12 @@
 //   margin-top: 50,
 // }
 
-import { Contacts } from 'components/Contacts';
-import { Phonebook } from 'components/Phonebook';
+import { Contacts } from 'components/Contacts/Contacts';
+import { Phonebook } from 'components/Phonebook/Phonebook';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { contactsFetch } from 'redux/operations';
+import { contactsFetch } from 'redux/contacts/operations';
+import { StyledDiv } from './HomePage.styled';
 
 function Tasks() {
   const dispatch = useDispatch();
@@ -16,11 +17,16 @@ function Tasks() {
     dispatch(contactsFetch());
   }, [dispatch]);
 
+  console.log('Rerendered');
   return (
-    <div>
-      <Phonebook onClickAddContact />
+    <StyledDiv style={{ justifyContent: 'flex-start' }}>
+      <div>
+        {' '}
+        <Phonebook onClickAddContact />
+      </div>
+
       <Contacts onDeleteContact />
-    </div>
+    </StyledDiv>
   );
 }
 

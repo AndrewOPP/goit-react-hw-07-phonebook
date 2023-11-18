@@ -1,5 +1,5 @@
 import { addContactPost, contactsFetch, deleteContactAPI } from './operations';
-
+import { logOut } from 'redux/auth/operations';
 const { createSlice } = require('@reduxjs/toolkit');
 
 const contactsInitialState = {
@@ -50,6 +50,11 @@ const contactsSlice = createSlice({
     [deleteContactAPI.rejected](state, action) {
       state.isLoading = false;
       state.error = action.payload;
+    },
+    [logOut.fulfilled](state) {
+      state.contacts = [];
+      state.error = null;
+      state.isLoading = false;
     },
   },
 });

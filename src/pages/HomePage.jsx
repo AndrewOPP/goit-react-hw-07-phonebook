@@ -1,13 +1,15 @@
+import { StyledDiv, StyledH1 } from './HomePage.styled';
+
 function HomePage() {
   return (
-    <div>
-      <h1>
-        Task manager welcome page{' '}
+    <StyledDiv>
+      <StyledH1>
+        Contact manager welcome page{' '}
         <span role="img" aria-label="Greeting icon">
           💁‍♀️
         </span>
-      </h1>
-    </div>
+      </StyledH1>
+    </StyledDiv>
   );
 }
 

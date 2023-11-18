@@ -1,12 +1,12 @@
-import { nanoid } from 'nanoid';
 import css from './Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContactPost } from 'redux/operations';
+import { addContactPost } from 'redux/contacts/operations';
+import { CustomButton } from 'pages/HomePage.styled';
 
 export const Phonebook = () => {
   const contacts = useSelector(state => state.contacts.contacts);
   const dispatch = useDispatch();
-
+  // const token = useSelector(state => state.auth.token);
   const addToContacts = contact => {
     if (contacts.find(elem => elem.name === contact.name))
       return alert('Sorry, this contact is already added');
@@ -17,14 +17,13 @@ export const Phonebook = () => {
     event.preventDefault();
     const name = event.currentTarget.elements.name.value;
     const number = event.currentTarget.elements.phone.value;
-    document.getElementById('mainForm').reset();
 
     if (name && number) {
       addToContacts({
         name: name,
-        phone: number,
-        id: nanoid(),
+        number: number,
       });
+      event.currentTarget.reset();
     }
   };
 
@@ -42,9 +41,9 @@ export const Phonebook = () => {
           <input type="tel" name="phone" required />
         </label>
 
-        <button className={css.addButton} type="submit">
+        <CustomButton className={css.addButton} type="submit">
           Add contact
-        </button>
+        </CustomButton>
       </form>
     </>
   );

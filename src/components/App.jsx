@@ -1,9 +1,6 @@
-import { Phonebook } from './Phonebook';
-import { Contacts } from './Contacts';
-import css from './App.module.css';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { contactsFetch } from 'redux/operations';
+
 import { Route, Routes } from 'react-router-dom';
 import Layout from './Layout';
 import HomePage from 'pages/HomePage';
